@@ -13,7 +13,8 @@ public class StringComparisionEqual_Method
       String str5 = "Ravan";
       String str6 = "raVan";
       boolean str7 = str5.equalsIgnoreCase(str6);  // equalsIgnoreCase method ignore case-sensitive of strings
-           System.out.println(str7);
+        System.out.println(str7);
+        System.out.println(str5.equals(str6));
 
     }
 }
