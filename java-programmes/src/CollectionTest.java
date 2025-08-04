@@ -40,7 +40,9 @@ public class CollectionTest
         System.out.println(al);
         System.out.println(al2);
 
-        al.clear();                    // remove all elements from the given arraylist and print an empty arraylist
+       // al.clear();                    // remove all elements from the given arraylist and print an empty arraylist
         System.out.println(al);
+
+
     }
 }
