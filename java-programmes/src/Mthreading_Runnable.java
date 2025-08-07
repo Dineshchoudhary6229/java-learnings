@@ -1,3 +1,5 @@
+// Here single task with single thread
+
 public class Mthreading_Runnable implements  Runnable
 {
   public void run()
