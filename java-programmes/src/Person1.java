@@ -1,4 +1,4 @@
-class Person
+class Person1
 {
     private String name;
     private int age;
@@ -26,11 +26,11 @@ class Person
         }
     }
 }
-public class Person1
+class Person2
 {
     public static void main(String args[])
     {
-        Person p = new Person();
+        Person1 p = new Person1();
         p.setName("Anil");
         p.setAge(30);
         System.out.println("Name is :"+p.getName());
