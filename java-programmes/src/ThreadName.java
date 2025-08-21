@@ -1,3 +1,5 @@
+// creating thread without extending thread class
+
 public class ThreadName
 {
     public static void main(String[] args)

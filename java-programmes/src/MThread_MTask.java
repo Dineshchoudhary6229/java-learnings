@@ -1,20 +1,22 @@
-public class MThread_MTask extends Thread
+// Multiple thread with multiple tasks
+
+class MThread_MTask extends Thread
 {
- public void run()
+ public void run()                                  // override run method of thread class
  {
      System.out.println("1st Task");
  }
 }
 class MThread_MTask1 extends Thread
 {
-    public void run()
+    public void run()                               // override run method of thread class
     {
         System.out.println("2nd Task");
     }
 }
 class MThread_MTask2 extends Thread
 {
-    public void run()
+    public void run()                             //override run method of thread class
     {
         System.out.println("3rd Task");
     }

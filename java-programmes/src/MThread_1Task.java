@@ -1,4 +1,4 @@
-// single task with multiple thread
+// single task with multiple thread by extending Thread  class
 public class MThread_1Task extends Thread
 {
     public void run()
