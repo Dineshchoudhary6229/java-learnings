@@ -1,6 +1,6 @@
 class ArraySortAsc
 {
- public static void main(String args[])
+ public static void main(String []args)
  {
   int temp=0;
   int[] arr= new int[]{5,1,58,29,85,64,46};      // initialisation of  array

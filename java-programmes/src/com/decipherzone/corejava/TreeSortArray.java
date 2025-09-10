@@ -14,7 +14,7 @@ public class TreeSortArray
             tree.add(num);
         }
 
-                                                                                    // Print sorted elements
+                                                               // Print sorted elements
         System.out.println("Sorted elements:"+ tree);
 
         for( int num: tree){
