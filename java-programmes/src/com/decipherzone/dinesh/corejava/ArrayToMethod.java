@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// passing array to method
+package com.decipherzone.dinesh.corejava;// passing array to method
 
 public class ArrayToMethod
 {

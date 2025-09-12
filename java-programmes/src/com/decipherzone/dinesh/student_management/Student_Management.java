@@ -1,4 +1,4 @@
-package com.decipherzone.student_management;
+package com.decipherzone.dinesh.student_management;
 
 import java.util.*;
 

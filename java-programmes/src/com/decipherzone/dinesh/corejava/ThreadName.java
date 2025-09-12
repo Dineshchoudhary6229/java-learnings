@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// creating thread without extending thread class
+package com.decipherzone.dinesh.corejava;// creating thread without extending thread class
 
 public class ThreadName
 {

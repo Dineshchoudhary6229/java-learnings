@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// create thread and set its name
+package com.decipherzone.dinesh.corejava;// create thread and set its name
 
 public class ThreadName1 extends Thread
 {

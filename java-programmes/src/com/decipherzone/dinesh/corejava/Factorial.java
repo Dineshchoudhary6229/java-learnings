@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// factorial programme taking input from user to find its factorial.
+package com.decipherzone.dinesh.corejava;// factorial programme taking input from user to find its factorial.
 
 import java.util.Scanner;
 public class Factorial

@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// passing annyomous array to method
+package com.decipherzone.dinesh.corejava;// passing annyomous array to method
 
 public class AnnyomousArray
 {

@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// String Reverse through StringBuilder/StringBuffer
+package com.decipherzone.dinesh.corejava;// String Reverse through StringBuilder/StringBuffer
 
 public class StringReverse
 {

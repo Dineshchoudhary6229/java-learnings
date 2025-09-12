@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;
+package com.decipherzone.dinesh.corejava;
 
 // single task with multiple thread by extending Thread  class
 public class MThread_1Task extends Thread

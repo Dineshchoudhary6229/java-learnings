@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// Finding duplicate value in array using Hash Table
+package com.decipherzone.dinesh.corejava;// Finding duplicate value in array using Hash Table
 
 import java.util.Map;                                    // To call Map //
 import java.util.HashMap;                                // To call HashMap//

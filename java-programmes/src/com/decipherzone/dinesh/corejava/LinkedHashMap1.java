@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// Linked Hash Map --> it maintain order i.e. elements in it will be in same order inwhich we insert in it
+package com.decipherzone.dinesh.corejava;// Linked Hash Map --> it maintain order i.e. elements in it will be in same order inwhich we insert in it
 import java.util.LinkedHashMap;
 import java.util.Map;
 

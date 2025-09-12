@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// Hashmap- There is no order in it
+package com.decipherzone.dinesh.corejava;// Hashmap- There is no order in it
 
 import java.util.HashMap;
 import java.util.Map;

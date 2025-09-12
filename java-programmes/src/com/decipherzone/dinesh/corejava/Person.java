@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// immutable class --> must have constructor, class name shoud be final,use only getter not setter.
+package com.decipherzone.dinesh.corejava;// immutable class --> must have constructor, class name shoud be final,use only getter not setter.
 
 public final class Person
 {

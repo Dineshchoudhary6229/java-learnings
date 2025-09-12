@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// programme for Daemon Thread
+package com.decipherzone.dinesh.corejava;// programme for Daemon Thread
 
 public class ThreadDaemon extends Thread
 {

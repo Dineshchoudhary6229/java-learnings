@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;
+package com.decipherzone.dinesh.corejava;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// sleep method in thread
+package com.decipherzone.dinesh.corejava;// sleep method in thread
 
 public class Thread_Sleep extends Thread
 {

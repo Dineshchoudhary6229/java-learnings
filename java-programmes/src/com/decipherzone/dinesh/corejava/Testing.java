@@ -1,8 +1,9 @@
-package com.decipherzone.corejava;
+package com.decipherzone.dinesh.corejava;
 
+public class Testing
+{
 
-
-
+}
 
 
 
@@ -97,31 +98,7 @@ Scanner sc = new Scanner(System.in);
  */
 
 
-/* typecasting -- up casting and down casting
-class Animal1
-{
-    public void eat1()
-    {
-        System.out.println("munch");
-    }
-}
-
-public class Testing extends Animal1
-{
-    public void eat2()
-    {
-        System.out.println("wo wo woh");
-    }
-    public static void main(String[] args)
-    {
-        Animal1 obj1 = new Testing();          // up casting
-        Testing obj2 = (Testing) obj1;         // down casting
-        obj1.eat1();
-        obj2.eat2();
-        ((Testing) obj1).eat2();
-        obj2.eat1();
-    }
-}
+/*
 */
 
 

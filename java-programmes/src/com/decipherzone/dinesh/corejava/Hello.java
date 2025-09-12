@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;
+package com.decipherzone.dinesh.corejava;
 
 public class Hello{
 public static void main(String[]args){

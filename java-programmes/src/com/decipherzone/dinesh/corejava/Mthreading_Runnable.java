@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// Here single task with single thread
+package com.decipherzone.dinesh.corejava;// Here single task with single thread
 
 public class Mthreading_Runnable implements  Runnable
 {

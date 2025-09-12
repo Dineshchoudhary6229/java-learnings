@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// Multiple thread with multiple tasks
+package com.decipherzone.dinesh.corejava;// Multiple thread with multiple tasks
 
 class MThread_MTask extends Thread
 {

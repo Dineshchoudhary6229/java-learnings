@@ -1,4 +1,4 @@
-package com.decipherzone.corejava;// different ways to create arraylist
+package com.decipherzone.dinesh.corejava;// different ways to create arraylist
 
 import java.util.ArrayList;
 import java.util.Arrays;
