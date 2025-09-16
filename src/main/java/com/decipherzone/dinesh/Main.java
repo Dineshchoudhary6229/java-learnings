@@ -1,4 +1,4 @@
-package org.example;
+package com.decipherzone.dinesh;
 import java.sql.Connection;
 
 public class Main {

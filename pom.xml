@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
     <artifactId>DB_PostgreSql</artifactId>
     <version>1.0-SNAPSHOT</version>
-<<<<<<< Updated upstream
+    <name>java-learning</name>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -15,11 +16,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-</project>
-=======
-    <name>java-learning</name>
     <build>
-        <plugins>  <!-- plugin for maven-->
+        <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -33,18 +31,18 @@
     </build>
 
     <dependencies>
-        <dependency>      <!-- PostgresSQL JDBC driver which connect a PostgreSQL database and execute SQL queries -->
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.7.3</version>
         </dependency>
-        <dependency>           <!--JUnit 5 library used for unit testing in Java, only used during testing -->
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.10.2</version>
             <scope>test</scope>
         </dependency>
-        <dependency>    <!-- Testing framework for java like JUnit, used for grouping tests, dependencies between tests, and running tests in parallel -->
+        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.8.0</version>
@@ -56,5 +54,5 @@
             <version>1.5.13</version>
         </dependency>
     </dependencies>
+
 </project>
->>>>>>> Stashed changes
