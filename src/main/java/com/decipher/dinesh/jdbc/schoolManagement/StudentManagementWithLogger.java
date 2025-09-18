@@ -1,4 +1,4 @@
-// with jdbc and postgres sql student management
+// use of SLF4J and  Logback for logging.
 
 package com.decipher.dinesh.jdbc.schoolManagement;
 
@@ -9,14 +9,14 @@ import java.sql.*;
 import java.util.*;
 import java.io.InputStream;
 
-public class StudentManagement
-{                                                 //logger is used for info regarding debuging,error tracking
-    private static final Logger log = LoggerFactory.getLogger(StudentManagement.class);
+public class StudentManagementWithLogger
+{
+    private static final Logger log = LoggerFactory.getLogger(StudentManagementWithLogger.class);
     Scanner scanner = new Scanner(System.in);
-    private final Properties props = new Properties();         //used for application.properties file to load config setting from there
+    private final Properties props = new Properties();
 
     //Database Connection starts here
-    public StudentManagement()
+    public StudentManagementWithLogger()
     {
         try (InputStream input = getClass().getClassLoader().getResourceAsStream("application.properties"))
         {
@@ -35,13 +35,15 @@ public class StudentManagement
             throw new RuntimeException(e);
         }
     }
-    private Connection getConnection() throws SQLException              //driver manager to connect to database
+
+    private Connection getConnection() throws SQLException
     {
         String url = props.getProperty("jdbc.postgresql://localhost:5432/schooldb");
         String user = props.getProperty("jdbc.postgres");
         String password = props.getProperty("jdbc.Dinesh6229");
         return DriverManager.getConnection(url, user, password);
     }
+
     void addStudent(String name, int age, String grade)
     {             //for student
         String sql = "INSERT INTO students (name, age, grade) VALUES (?, ?, ?)";
@@ -53,13 +55,14 @@ public class StudentManagement
             ps.setInt(2, age);             // fills/set placeholder for ? in age
             ps.setString(3, grade);
             ps.executeUpdate();                         // to execute the query
-            System.out.println("Student added");
+            log.info("Student added successfully: Name={}, Age={}, Grade={}", name, age, grade);
         }
         catch (SQLException e)
         {
-            log.error("e: ", e);
+            log.error("Error adding student: Name={}, Age={}, Grade={}", name, age, grade, e);
         }
     }
+
     void updateStudent(int id, String name, int age, String grade)
     {
         String sql = "UPDATE students SET name=?, age=?, grade=? WHERE id=?";
@@ -71,13 +74,18 @@ public class StudentManagement
             ps.setString(3, grade);
             ps.setInt(4, id);
             int rows = ps.executeUpdate();
-            System.out.println(rows > 0 ? " Student updated." : " Student not found.");
+            if (rows > 0) {
+                log.info("Student updated: ID={}, Name={}, Age={}, Grade={}", id, name, age, grade);
+            } else {
+                log.warn("Student not found for update: ID={}", id);
+            }
         }
         catch (SQLException e)
         {
-            log.error("e: ", e);
+            log.error("Error updating student: ID={}, Name={}, Age={}, Grade={}", id, name, age, grade, e);
         }
     }
+
     void deleteStudent(int id) {
         String sql = "DELETE FROM students WHERE id=?";
         try
@@ -85,18 +93,24 @@ public class StudentManagement
         {
             ps.setInt(1, id);
             int rows = ps.executeUpdate();
-            System.out.println(rows > 0 ? " Student deleted." : " Student not found.");
+            if (rows > 0) {
+                log.info("Student deleted: ID={}", id);
+            } else {
+                log.warn("Student not found for deletion: ID={}", id);
+            }
         }
         catch (SQLException e)
         {
-            log.error("e: ", e);
+            log.error("Error deleting student: ID={}", id, e);
         }
     }
+
     void viewAllStudents() {
         String sql = "SELECT * FROM students";
         try
                 (Connection conn = getConnection(); Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(sql))
         {
+            log.info("Fetching all students from database");
             while (rs.next())
             {
                 System.out.println("ID: " + rs.getInt("id") +
@@ -107,9 +121,10 @@ public class StudentManagement
         }
         catch (SQLException e)
         {
-            log.error("e: ", e);
+            log.error("Error fetching student list", e);
         }
     }
+
     // Teacher
     void addTeacher(String name, String subject)
     {
@@ -120,18 +135,20 @@ public class StudentManagement
             ps.setString(1, name);
             ps.setString(2, subject);
             ps.executeUpdate();
-            System.out.println(" Teacher added.");
+            log.info("Teacher added successfully: Name={}, Subject={}", name, subject);
         }
         catch (SQLException e)
         {
-            log.error("e: ", e);
+            log.error("Error adding teacher: Name={}, Subject={}", name, subject, e);
         }
     }
+
     void viewAllTeachers() {
         String sql = "SELECT * FROM teachers";
         try
                 (Connection conn = getConnection(); Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(sql))
         {
+            log.info("Fetching all teachers from database");
             while (rs.next())
             {
                 System.out.println("ID: " + rs.getInt("id") +
@@ -141,9 +158,10 @@ public class StudentManagement
         }
         catch (SQLException e)
         {
-            log.error("e: ", e);
+            log.error("Error fetching teacher list", e);
         }
     }
+
     //Course
     void addCourse(String name, int teacherId)
     {
@@ -154,18 +172,20 @@ public class StudentManagement
             ps.setString(1, name);
             ps.setInt(2, teacherId);
             ps.executeUpdate();
-            System.out.println(" Course added.");
+            log.info("Course added successfully: Name={}, TeacherID={}", name, teacherId);
         }
         catch (SQLException e)
         {
-            log.error("e: ", e);
+            log.error("Error adding course: Name={}, TeacherID={}", name, teacherId, e);
         }
     }
+
     void viewAllCourses() {
         String sql = "SELECT * FROM courses";
         try
                 (Connection conn = getConnection(); Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(sql))
         {
+            log.info("Fetching all courses from database");
             while (rs.next())
             {
                 System.out.println("ID: " + rs.getInt("id") +
@@ -175,9 +195,10 @@ public class StudentManagement
         }
         catch (SQLException e)
         {
-            log.error("e: ", e);
+            log.error("Error fetching course list", e);
         }
     }
+
     //Enrollment
     void enrollStudent(int studentId, int courseId)
     {
@@ -187,19 +208,21 @@ public class StudentManagement
         {
             ps.setInt(1, studentId); ps.setInt(2, courseId);
             ps.executeUpdate();
-            System.out.println(" Student enrolled in course.");
+            log.info("Student enrolled in course: StudentID={}, CourseID={}", studentId, courseId);
         }
         catch (SQLException e)
         {
-            log.error("e: ", e);
+            log.error("Error enrolling student: StudentID={}, CourseID={}", studentId, courseId, e);
         }
     }
+
     void viewAllEnrollments()
     {
         String sql = "SELECT * FROM enrollments";
         try
                 (Connection conn = getConnection(); Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(sql))
         {
+            log.info("Fetching all enrollments from database");
             while (rs.next())
             {
                 System.out.println("Student ID: " + rs.getInt("student_id") +
@@ -208,18 +231,20 @@ public class StudentManagement
         }
         catch (SQLException e)
         {
-            log.error("e: ", e);
+            log.error("Error fetching enrollment list", e);
         }
     }
+
     //student's all functions start menu
     void studentMenu()
     {
         System.out.println("1. Add 2. Update 3. Delete 4. View All");
         int c = scanner.nextInt();
         scanner.nextLine();               // consume the leftover new line
+        log.info("Student menu option selected: {}", c);
         switch (c)
         {
-            case 1 ->                      //lambda expression
+            case 1 ->
             {
                 System.out.print("Name: ");
                 String name=scanner.nextLine();
@@ -253,12 +278,14 @@ public class StudentManagement
             case 4 -> viewAllStudents();
         }
     }
+
     //teacher all functions start menu
     void teacherMenu()
     {
         System.out.println("1. Add 2. View All");
         int c = scanner.nextInt();
         scanner.nextLine();
+        log.info("Teacher menu option selected: {}", c);
         switch (c)
         {
             case 1 ->
@@ -269,15 +296,17 @@ public class StudentManagement
                 String subject=scanner.nextLine();
                 addTeacher(name,subject);
             }
-            case 2 -> viewAllTeachers();         //lambda experssion
+            case 2 -> viewAllTeachers();
         }
     }
+
     // course all functions start menu
     void courseMenu()
     {
         System.out.println("1. Add 2. View All");
         int c = scanner.nextInt();
         scanner.nextLine();
+        log.info("Course menu option selected: {}", c);
         switch (c)
         {
             case 1 ->
@@ -291,10 +320,12 @@ public class StudentManagement
             case 2 -> viewAllCourses();
         }
     }
+
     void enrollmentMenu()
     {
         System.out.println("1. Enroll Student 2. View All");
         int c = scanner.nextInt();
+        log.info("Enrollment menu option selected: {}", c);
         switch (c)
         {
             case 1 ->
@@ -308,6 +339,7 @@ public class StudentManagement
             case 2 -> viewAllEnrollments();
         }
     }
+
     // first display to choose from all
     void startMenu()
     {
@@ -317,20 +349,20 @@ public class StudentManagement
             System.out.println("1. Students  2. Teachers  3. Courses  4. Enrollments  5. Exit");
             System.out.print("Choose: ");
             int choice = scanner.nextInt();
+            log.info("Main menu option selected: {}", choice);
             switch (choice)
             {
                 case 1 -> studentMenu();
                 case 2 -> teacherMenu();
                 case 3 -> courseMenu();
                 case 4 -> enrollmentMenu();
-
                 case 5 -> System.exit(0);
             }
         }
     }
-    public static void main(String[] args)
 
+    public static void main(String[] args)
     {
-        new StudentManagement().startMenu();         // anonymous object
+        new StudentManagementWithLogger().startMenu();         // anonymous object
     }
 }
