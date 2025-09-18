@@ -1,3 +1,18 @@
-2025-09-16 22:34:28 [main] INFO  c.d.d.j.s.StudentManagementWithLogger - Main menu option selected: 1
-2025-09-16 22:34:32 [main] INFO  c.d.d.j.s.StudentManagementWithLogger - Student menu option selected: 4
-2025-09-16 22:34:32 [main] INFO  c.d.d.j.s.StudentManagementWithLogger - Fetching all students from database
+2025-09-18 18:14:02 [main] ERROR c.d.d.j.s.StudentManagement - e: 
+java.sql.SQLException: The url cannot be null
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:666)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at com.decipher.dinesh.jdbc.schoolManagement.StudentManagement.getConnection(StudentManagement.java:43)
+	at com.decipher.dinesh.jdbc.schoolManagement.StudentManagement.viewAllStudents(StudentManagement.java:98)
+	at com.decipher.dinesh.jdbc.schoolManagement.StudentManagement.studentMenu(StudentManagement.java:253)
+	at com.decipher.dinesh.jdbc.schoolManagement.StudentManagement.startMenu(StudentManagement.java:322)
+	at com.decipher.dinesh.jdbc.schoolManagement.StudentManagement.main(StudentManagement.java:336)
+2025-09-18 18:15:45 [main] ERROR c.d.d.j.s.StudentManagement - e: 
+java.sql.SQLException: The url cannot be null
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:666)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at com.decipher.dinesh.jdbc.schoolManagement.StudentManagement.getConnection(StudentManagement.java:43)
+	at com.decipher.dinesh.jdbc.schoolManagement.StudentManagement.viewAllStudents(StudentManagement.java:98)
+	at com.decipher.dinesh.jdbc.schoolManagement.StudentManagement.studentMenu(StudentManagement.java:253)
+	at com.decipher.dinesh.jdbc.schoolManagement.StudentManagement.startMenu(StudentManagement.java:322)
+	at com.decipher.dinesh.jdbc.schoolManagement.StudentManagement.main(StudentManagement.java:335)

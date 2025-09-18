@@ -214,9 +214,7 @@ public class Student_Management {
                     System.out.print("Grade: ");
                     updateStudent.setGrade(scanner.nextLine());
                     System.out.println("Student updated.");
-                }
-                else
-                {
+                } else {
                     System.out.println("Not found.");
                 }
                 break;
@@ -224,18 +222,14 @@ public class Student_Management {
                 System.out.print("Enter Student ID to delete: ");
                 int deleteId = nextInt();
                 Student deleteStudent = findStudent(deleteId);
-                if (deleteStudent != null && students.remove(deleteStudent))
-                {
+                if (deleteStudent != null && students.remove(deleteStudent)) {
                     System.out.println("Deleted.");
-                }
-                else
-                {
+                } else {
                     System.out.println("Not found.");
                 }
                 break;
             case 4:
-                for (Student s : students)
-                {
+                for (Student s : students) {
                     System.out.println(s);
                 }
                 break;
@@ -264,9 +258,7 @@ public class Student_Management {
                     System.out.print("Subject: ");
                     ut.setSubject(scanner.nextLine());
                     System.out.println("Teacher updated.");
-                }
-                else
-                {
+                } else {
                     System.out.println("Not found.");
                 }
                 break;
@@ -274,19 +266,14 @@ public class Student_Management {
                 System.out.print("Enter Teacher ID to delete: ");
                 int deleteId = nextInt();
                 Teacher deleteTeacher = findTeacher(deleteId);
-                if (deleteTeacher != null && teachers.remove(deleteTeacher))
-                {
+                if (deleteTeacher != null && teachers.remove(deleteTeacher)) {
                     System.out.println("Deleted.");
-                }
-
-                else
-                {
+                } else {
                     System.out.println("Not found.");
                 }
                 break;
             case 4:
-                for (Teacher t : teachers)
-                {
+                for (Teacher t : teachers) {
                     System.out.println(t);
                 }
                 break;
@@ -296,8 +283,7 @@ public class Student_Management {
     void courseMenu() {
         System.out.println("1. Add 2. Update 3. Delete 4. View All");
         int choice = nextInt();
-        switch (choice)
-        {
+        switch (choice) {
             case 1:
                 System.out.print("Name: ");
                 String name = scanner.nextLine();
@@ -312,9 +298,7 @@ public class Student_Management {
                     System.out.print("Name: ");
                     updateCourse.setName(scanner.nextLine());
                     System.out.println("Course updated.");
-                }
-                else
-                {
+                } else {
                     System.out.println("Not found.");
                 }
                 break;
@@ -322,18 +306,14 @@ public class Student_Management {
                 System.out.print("Enter Course ID to delete: ");
                 int deleteId = nextInt();
                 Course deleteCourse = findCourse(deleteId);
-                if (deleteCourse != null && courses.remove(deleteCourse))
-                {
+                if (deleteCourse != null && courses.remove(deleteCourse)) {
                     System.out.println("Deleted.");
-                }
-                else
-                {
+                } else {
                     System.out.println("Not found.");
                 }
                 break;
             case 4:
-                for (Course c : courses)
-                {
+                for (Course c : courses) {
                     System.out.println(c);
                 }
                 break;
@@ -350,9 +330,7 @@ public class Student_Management {
         if (s != null && c != null) {
             c.enrollStudent(s);              //adds the student to the course's enrolled student list
             System.out.println("Enrolled.");
-        }
-        else
-        {
+        } else {
             System.out.println("Student or Course not found.");
         }
     }
@@ -367,9 +345,7 @@ public class Student_Management {
         if (t != null && c != null) {
             c.assignTeacher(t);                    //call method assignTeacher in course class and assign that teacher to that course
             System.out.println("Assigned.");
-        }
-        else
-        {
+        } else {
             System.out.println("Teacher or Course not found.");
         }
     }
@@ -378,15 +354,12 @@ public class Student_Management {
         System.out.print("Enter Course ID: ");
         int courseId = nextInt();
         Course c = findCourse(courseId);
-        if (c != null && !c.getEnrolledStudents().isEmpty())
-        {
+        if (c != null && !c.getEnrolledStudents().isEmpty()) {
             for (Student s : c.getEnrolledStudents())  // retrieve student enrolled in course by for-each loop
             {
                 System.out.println(s);
             }
-        }
-        else
-        {
+        } else {
             System.out.println("No students enrolled or course not found.");
         }
     }
@@ -395,10 +368,8 @@ public class Student_Management {
         System.out.print("Enter Teacher ID: ");
         int teacherId = nextInt();
         boolean found = false;                          // we can use  int count=0; also here
-        for (Course c : courses)
-        {
-            if (c.getAssignedTeacher() != null && c.getAssignedTeacher().getId() == teacherId)
-            {
+        for (Course c : courses) {
+            if (c.getAssignedTeacher() != null && c.getAssignedTeacher().getId() == teacherId) {
                 System.out.println(c);
                 found = true;                         // if we use count then here we count++;
             }
@@ -421,10 +392,8 @@ public class Student_Management {
     }
 
     Student findStudent(int id) {
-        for (Student s : students)
-        {
-            if (s.getId() == id)
-            {
+        for (Student s : students) {
+            if (s.getId() == id) {
                 return s;
             }
         }
@@ -432,10 +401,8 @@ public class Student_Management {
     }
 
     Teacher findTeacher(int id) {
-        for (Teacher t : teachers)
-        {
-            if (t.getId() == id)
-            {
+        for (Teacher t : teachers) {
+            if (t.getId() == id) {
                 return t;
             }
         }
@@ -443,10 +410,8 @@ public class Student_Management {
     }
 
     Course findCourse(int id) {
-        for (Course c : courses)
-        {
-            if (c.getId() == id)
-            {
+        for (Course c : courses) {
+            if (c.getId() == id) {
                 return c;
             }
         }

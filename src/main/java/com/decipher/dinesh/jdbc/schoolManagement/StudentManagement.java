@@ -10,7 +10,7 @@ import java.util.*;
 import java.io.InputStream;
 
 public class StudentManagement
-{                                                 //logger is used for info regarding debuging,error tracking
+{                                                 //logger is used for info regarding debugging,error tracking
     private static final Logger log = LoggerFactory.getLogger(StudentManagement.class);
     Scanner scanner = new Scanner(System.in);
     private final Properties props = new Properties();         //used for application.properties file to load config setting from there
@@ -37,9 +37,9 @@ public class StudentManagement
     }
     private Connection getConnection() throws SQLException              //driver manager to connect to database
     {
-        String url = props.getProperty("jdbc.postgresql://localhost:5432/schooldb");
-        String user = props.getProperty("jdbc.postgres");
-        String password = props.getProperty("jdbc.Dinesh6229");
+        String url = props.getProperty("jdbc.url");
+        String user = props.getProperty("jdbc.username");
+        String password = props.getProperty("jdbc.password");
         return DriverManager.getConnection(url, user, password);
     }
     void addStudent(String name, int age, String grade)
@@ -219,7 +219,7 @@ public class StudentManagement
         scanner.nextLine();               // consume the leftover new line
         switch (c)
         {
-            case 1 ->                      //lambda expression
+            case 1 ->
             {
                 System.out.print("Name: ");
                 String name=scanner.nextLine();
@@ -269,7 +269,7 @@ public class StudentManagement
                 String subject=scanner.nextLine();
                 addTeacher(name,subject);
             }
-            case 2 -> viewAllTeachers();         //lambda experssion
+            case 2 -> viewAllTeachers();
         }
     }
     // course all functions start menu
@@ -331,6 +331,8 @@ public class StudentManagement
     public static void main(String[] args)
 
     {
-        new StudentManagement().startMenu();         // anonymous object
+
+        StudentManagement object =new StudentManagement();
+        object.startMenu();
     }
 }
