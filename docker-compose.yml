@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: student_management
+    environment:
+      POSTGRES_DB: schooldb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Dkdinesh6229
+    ports:
+      - "5432:5432"
+    volumes:
+      - schooldb_data:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d
+
+
+  app:
+    build: .
+    container_name: student-management-app
+    image: student-management-app
+    depends_on:
+      - postgres
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/schooldb
+      DB_USER: postgres
+      DB_PASSWORD: Dkdinesh6229
+    tty: true
+    stdin_open: true
+
+volumes:
+  schooldb_data:

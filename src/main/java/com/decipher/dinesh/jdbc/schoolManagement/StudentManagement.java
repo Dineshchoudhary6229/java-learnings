@@ -10,15 +10,16 @@ import java.util.*;
 import java.io.InputStream;
 
 public class StudentManagement
-{                                                 //logger is used for info regarding debugging,error tracking
-    private static final Logger log = LoggerFactory.getLogger(StudentManagement.class);
+{         //logger is used for info regarding debugging,error tracking
+    private static final Logger log = LoggerFactory.getLogger(StudentManagement.class);    //creates logger instance for loging
     Scanner scanner = new Scanner(System.in);
-    private final Properties props = new Properties();         //used for application.properties file to load config setting from there
+    private final Properties props = new Properties();
+    //used for application.properties file to load config setting from there like url,password, username
 
     //Database Connection starts here
     public StudentManagement()
     {
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("application.properties"))
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream("application.properties"))//loads a resource file(application.properties )from class path as input stream
         {
             if (input == null)
             {
@@ -26,8 +27,9 @@ public class StudentManagement
                 throw new RuntimeException("application.properties file not found in resources folder");
             }
             props.load(input);
-            // Load driver class if necessary (optional for newer JDBC versions)
+            // configuration properties are loaded from the input stream into the Properties object
             Class.forName(props.getProperty("jdbc.driver"));
+            //the driver class for JDBC is loaded using the name provided in the properties file
         }
         catch (Exception e)
         {
@@ -35,18 +37,23 @@ public class StudentManagement
             throw new RuntimeException(e);
         }
     }
-    private Connection getConnection() throws SQLException              //driver manager to connect to database
+    private Connection getConnection() throws SQLException
+    //a method is defined to establish a database connection using the loaded configuration
     {
         String url = props.getProperty("jdbc.url");
+        //the method retrieves the JDBC URL from the configuration properties
         String user = props.getProperty("jdbc.username");
+        //the method gets the database username from the properties
         String password = props.getProperty("jdbc.password");
         return DriverManager.getConnection(url, user, password);
+        //database connection is established
     }
     void addStudent(String name, int age, String grade)
     {             //for student
         String sql = "INSERT INTO students (name, age, grade) VALUES (?, ?, ?)";
+        //a parameterized SQL insert query is created for adding a student
         try
-                (Connection conn = getConnection();   //conn connects to the database
+                (Connection conn = getConnection();   //a new database connection and PreparedStatement for the insert query are created
                  PreparedStatement ps = conn.prepareStatement(sql))     //ps prepare the query
         {
             ps.setString(1, name);         // fills/set placeholder for ? in name
@@ -70,7 +77,7 @@ public class StudentManagement
             ps.setInt(2, age);
             ps.setString(3, grade);
             ps.setInt(4, id);
-            int rows = ps.executeUpdate();
+            int rows = ps.executeUpdate(); //the update query is executed and the number of affected rows is captured.
             System.out.println(rows > 0 ? " Student updated." : " Student not found.");
         }
         catch (SQLException e)
@@ -97,7 +104,7 @@ public class StudentManagement
         try
                 (Connection conn = getConnection(); Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(sql))
         {
-            while (rs.next())
+            while (rs.next()) // the ResultSet cursor advances to the next record
             {
                 System.out.println("ID: " + rs.getInt("id") +
                         ", Name: " + rs.getString("name") +
@@ -134,6 +141,7 @@ public class StudentManagement
         {
             while (rs.next())
             {
+                //information is retrieved from ResultSet and displayed
                 System.out.println("ID: " + rs.getInt("id") +
                         ", Name: " + rs.getString("name") +
                         ", Subject: " + rs.getString("subject"));
@@ -144,7 +152,7 @@ public class StudentManagement
             log.error("e: ", e);
         }
     }
-    //Course
+    //a method to add a new course assigned to a teacher
     void addCourse(String name, int teacherId)
     {
         String sql = "INSERT INTO courses (name, teacher_id) VALUES (?, ?)";
@@ -168,6 +176,7 @@ public class StudentManagement
         {
             while (rs.next())
             {
+                //course information is read from the ResultSet
                 System.out.println("ID: " + rs.getInt("id") +
                         ", Name: " + rs.getString("name") +
                         ", Teacher ID: " + rs.getInt("teacher_id"));
@@ -178,15 +187,16 @@ public class StudentManagement
             log.error("e: ", e);
         }
     }
-    //Enrollment
+    //a method to enroll a student to a course
     void enrollStudent(int studentId, int courseId)
     {
         String sql = "INSERT INTO enrollments (student_id, course_id) VALUES (?, ?)";
         try
                 (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql))
         {
-            ps.setInt(1, studentId); ps.setInt(2, courseId);
-            ps.executeUpdate();
+            ps.setInt(1, studentId);
+            ps.setInt(2, courseId);//placeholders are set for student ID and course ID
+            ps.executeUpdate();  //the enrollment is registered in the database
             System.out.println(" Student enrolled in course.");
         }
         catch (SQLException e)
@@ -198,7 +208,9 @@ public class StudentManagement
     {
         String sql = "SELECT * FROM enrollments";
         try
-                (Connection conn = getConnection(); Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(sql))
+                (Connection conn = getConnection();
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery(sql))  //executed query for enrollments is created
         {
             while (rs.next())
             {
@@ -217,7 +229,7 @@ public class StudentManagement
         System.out.println("1. Add 2. Update 3. Delete 4. View All");
         int c = scanner.nextInt();
         scanner.nextLine();               // consume the leftover new line
-        switch (c)
+        switch (c)                      //switch-case is used to select the operation menu chosen by the user
         {
             case 1 ->
             {
@@ -291,7 +303,7 @@ public class StudentManagement
             case 2 -> viewAllCourses();
         }
     }
-    void enrollmentMenu()
+    void enrollmentMenu()                   //menu for enrollment is provided, offering enroll and view options
     {
         System.out.println("1. Enroll Student 2. View All");
         int c = scanner.nextInt();
@@ -308,7 +320,7 @@ public class StudentManagement
             case 2 -> viewAllEnrollments();
         }
     }
-    // first display to choose from all
+    // first display to choose from all ,the main application menu is implemented, looping for user options
     void startMenu()
     {
         while (true)
@@ -334,5 +346,6 @@ public class StudentManagement
 
         StudentManagement object =new StudentManagement();
         object.startMenu();
+        //the startMenu method is called using the object instance to begin the interactive menu
     }
 }

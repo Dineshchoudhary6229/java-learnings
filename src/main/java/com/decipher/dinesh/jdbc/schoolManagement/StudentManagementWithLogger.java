@@ -35,14 +35,27 @@ public class StudentManagementWithLogger
             throw new RuntimeException(e);
         }
     }
+    private Connection getConnection() throws SQLException {
+        // Check environment variables first
+        String envUrl = System.getenv("DB_URL");
+        String envUser = System.getenv("DB_USER");
+        String envPassword = System.getenv("DB_PASSWORD");
 
-    private Connection getConnection() throws SQLException
-    {
-        String url = props.getProperty("jdbc.postgresql://localhost:5432/schooldb");
-        String user = props.getProperty("jdbc.postgres");
-        String password = props.getProperty("jdbc.Dinesh6229");
+        String url = (envUrl != null) ? envUrl : props.getProperty("jdbc.url");
+        String user = (envUser != null) ? envUser : props.getProperty("jdbc.username");
+        String password = (envPassword != null) ? envPassword : props.getProperty("jdbc.password");
+
         return DriverManager.getConnection(url, user, password);
     }
+
+
+//    private Connection getConnection() throws SQLException
+//    {
+//        String url = props.getProperty("jdbc.postgresql://localhost:5432/schooldb");
+//        String user = props.getProperty("jdbc.postgres");
+//        String password = props.getProperty("jdbc.Dinesh6229");
+//        return DriverManager.getConnection(url, user, password);
+//    }
 
     void addStudent(String name, int age, String grade)
     {             //for student
