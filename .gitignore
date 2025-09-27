@@ -1,8 +1,11 @@
-
 # IntelliJ IDEA
 .idea/
 *.iml
 out/
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
 
 # Maven build
 target/
@@ -14,6 +17,31 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code
+.vscode/
 
 # Logs
 *.log
@@ -22,6 +50,5 @@ buildNumber.properties
 .DS_Store
 Thumbs.db
 
-# Test Reports
-surefire-reports/
-failsafe-reports/
+# Compiled classes
+*.class
