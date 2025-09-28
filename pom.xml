@@ -6,8 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.decipherzone</groupId>
-    <artifactId>backend-learnings</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>java-learnings</artifactId>
+    <version>student-management</version>
     <name>java-learning</name>
 
     <properties>
@@ -56,6 +56,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <finalName>student-management</finalName>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.decipher.dinesh.jdbc.schoolManagement.StudentManagementWithLogger</mainClass>
