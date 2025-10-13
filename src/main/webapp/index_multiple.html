@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Management System - Multiple Servlets</title>
+</head>
+<body>
+<h1>Student Management System (Separate Servlets)</h1>
+
+<!-- STUDENTS -->
+<h2>Students</h2>
+<ul>
+    <li><a href="StudentServlet?action=view">View All Students</a></li>
+</ul>
+<h3>Add Student</h3>
+<form action="StudentServlet" method="post">
+    <input type="hidden" name="action" value="add"/>
+    Name: <input type="text" name="name"/><br/>
+    Age: <input type="text" name="age"/><br/>
+    Grade: <input type="text" name="grade"/><br/>
+    <input type="submit" value="Add Student"/>
+</form>
+
+<h3>Update Student</h3>
+<form action="StudentServlet" method="post">
+    <input type="hidden" name="action" value="update"/>
+    ID: <input type="text" name="id"/><br/>
+    Name: <input type="text" name="name"/><br/>
+    Age: <input type="text" name="age"/><br/>
+    Grade: <input type="text" name="grade"/><br/>
+    <input type="submit" value="Update Student"/>
+</form>
+
+<h3>Delete Student</h3>
+<form action="StudentServlet" method="post">
+    <input type="hidden" name="action" value="delete"/>
+    ID: <input type="text" name="id"/><br/>
+    <input type="submit" value="Delete Student"/>
+</form>
+
+<!-- TEACHERS -->
+<h2>Teachers</h2>
+<ul>
+    <li><a href="TeacherServlet?action=view">View All Teachers</a></li>
+</ul>
+<h3>Add Teacher</h3>
+<form action="TeacherServlet" method="post">
+    <input type="hidden" name="action" value="add"/>
+    Name: <input type="text" name="name"/><br/>
+    Subject: <input type="text" name="subject"/><br/>
+    <input type="submit" value="Add Teacher"/>
+</form>
+
+<h3>Update Teacher</h3>
+<form action="TeacherServlet" method="post">
+    <input type="hidden" name="action" value="update"/>
+    ID: <input type="text" name="id"/><br/>
+    Name: <input type="text" name="name"/><br/>
+    Subject: <input type="text" name="subject"/><br/>
+    <input type="submit" value="Update Teacher"/>
+</form>
+
+<h3>Delete Teacher</h3>
+<form action="TeacherServlet" method="post">
+    <input type="hidden" name="action" value="delete"/>
+    ID: <input type="text" name="id"/><br/>
+    <input type="submit" value="Delete Teacher"/>
+</form>
+
+<!-- COURSES -->
+<h2>Courses</h2>
+<ul>
+    <li><a href="CourseServlet?action=view">View All Courses</a></li>
+</ul>
+<h3>Add Course</h3>
+<form action="CourseServlet" method="post">
+    <input type="hidden" name="action" value="add"/>
+    Name: <input type="text" name="name"/><br/>
+    Teacher ID: <input type="text" name="teacher_id"/><br/>
+    <input type="submit" value="Add Course"/>
+</form>
+
+<h3>Update Course</h3>
+<form action="CourseServlet" method="post">
+    <input type="hidden" name="action" value="update"/>
+    ID: <input type="text" name="id"/><br/>
+    Name: <input type="text" name="name"/><br/>
+    Teacher ID: <input type="text" name="teacher_id"/><br/>
+    <input type="submit" value="Update Course"/>
+</form>
+
+<h3>Delete Course</h3>
+<form action="CourseServlet" method="post">
+    <input type="hidden" name="action" value="delete"/>
+    ID: <input type="text" name="id"/><br/>
+    <input type="submit" value="Delete Course"/>
+</form>
+
+<!-- ENROLLMENTS -->
+<h2>Enrollments</h2>
+<ul>
+    <li><a href="EnrollmentServlet?action=view">View All Enrollments</a></li>
+</ul>
+<h3>Enroll Student</h3>
+<form action="EnrollmentServlet" method="post">
+    <input type="hidden" name="action" value="add"/>
+    Student ID: <input type="text" name="student_id"/><br/>
+    Course ID: <input type="text" name="course_id"/><br/>
+    <input type="submit" value="Enroll Student"/>
+</form>
+
+<h3>Delete Enrollment</h3>
+<form action="EnrollmentServlet" method="post">
+    <input type="hidden" name="action" value="delete"/>
+    Student ID: <input type="text" name="student_id"/><br/>
+    Course ID: <input type="text" name="course_id"/><br/>
+    <input type="submit" value="Delete Enrollment"/>
+</form>
+
+</body>
+</html>
